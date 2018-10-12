@@ -52,7 +52,9 @@ fun main(args: Array<String>){
 
     val adrian = Usuario("Mario", vApellido = "Giler", vApellidoMaterno = "Salavarria")
     println(adrian)
-
+    println(BaseDeDatos.Usuarios)
+    println(BaseDeDatos.agregarUsuario("mario"))
+    println(BaseDeDatos.Usuarios)
 }
 
 fun calcularSueldo(bono: Double): Double{
@@ -88,3 +90,43 @@ class Usuario(public var nombre:String){//1er constructor
 
     }
 }
+
+
+open class Animal(var nombre:String){
+
+}
+
+class Tortuga( nombre: String,var pesoCaparazon:Double):Animal(nombre){
+
+    init {
+        println("$nombre $pesoCaparazon")
+    }
+}
+
+var animal= Animal(nombre = "caballo")
+var george = Tortuga(nombre = "George", pesoCaparazon = 12.5)
+
+class Ejemplo{
+    init {
+        println("Estoy en el init")
+    }
+    var nombre:String
+    constructor(nNombre:String){
+        nombre=nNombre
+        println("Estoy en el constructor ${nombre}")
+
+    }
+
+}
+
+var ejemplo = Ejemplo(nNombre = "Mario")
+
+class BaseDeDatos{
+    companion object{
+        val Usuarios:ArrayList<String> = ArrayList()
+        fun agregarUsuario(nombre:String){
+            Usuarios.add(nombre)
+        }
+    }
+}
+

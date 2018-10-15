@@ -55,6 +55,7 @@ fun main(args: Array<String>){
     println(BaseDeDatos.Usuarios)
     println(BaseDeDatos.agregarUsuario("mario"))
     println(BaseDeDatos.Usuarios)
+    println(BaseDeDatos.removerUsuario(0))
 }
 
 fun calcularSueldo(bono: Double): Double{
@@ -126,6 +127,9 @@ class BaseDeDatos{
         val Usuarios:ArrayList<String> = ArrayList()
         fun agregarUsuario(nombre:String){
             Usuarios.add(nombre)
+        }
+        fun removerUsuario(posicion:Int){
+            Usuarios.remove(posicion)
         }
     }
 }

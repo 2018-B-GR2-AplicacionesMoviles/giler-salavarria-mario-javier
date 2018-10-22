@@ -55,6 +55,16 @@ fun main(args: Array<String>){
     println(BaseDeDatos.Usuarios)
     println(BaseDeDatos.agregarUsuario("mario"))
     println(BaseDeDatos.Usuarios)
+    var medicina = Medicina()
+    medicina.codigoMedicina="1369742"
+    medicina.nombreMedicina="Paracetamol"
+    BaseDeDatosMedicina.agregarMedicina(medicina)
+    var medicina2 = Medicina()
+    medicina2.codigoMedicina="1697420"
+    medicina2.nombreMedicina="Aspirina"
+    BaseDeDatosMedicina.agregarMedicina(medicina2)
+    BaseDeDatosMedicina.eliminarMedicina("1697420")
+    BaseDeDatosMedicina.mostrarMedicinas()
 }
 
 fun calcularSueldo(bono: Double): Double{

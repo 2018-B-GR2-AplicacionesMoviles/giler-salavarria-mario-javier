@@ -4,6 +4,7 @@ import Base.BaseDeDatosPaciente
 import Base.BaseDeDatosMedicina
 import Modelo.Medicina
 import Modelo.Paciente
+import Modelo.Tratamiento
 
 fun main(args: Array<String>){
 
@@ -75,155 +76,119 @@ fun main(args: Array<String>){
     frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
     frame.pack()
     frame.isVisible = true*/
-    activarAplicacion()
+    var usuario:String=""
+    var nombreUsuario:String=""
+    println("Bienvenido al Sistema de Control de Pacientes")
+    print("Ingrese su usuario del sistema: ")
+    usuario= readLine()?.toString() as String
+    nombreUsuario=BaseDeDatosPaciente.comprobarDoctor(usuario)
+    if(!nombreUsuario.equals("")){
+        println("Bienvenido Doctor: " +nombreUsuario)
+        println("A Continuación se le presenta las opciones del sistema Doctor " + nombreUsuario)
+        activarAplicacion()
+    }else{
+        println("No existe usuario, digite de nuevo el usuario")
+        print("Ingrese su usuario del sistema: ")
+        usuario= readLine()?.toString() as String
+    }
+
 
 }
 
 fun activarAplicacion(){
     var estado:Int=0
-    var num: Int
-    println("Bienvenido al Sistema de Control de Pacientes e Inventarios de medicamentos")
-    println("1.- Inventario"+ "\n"+ "2.- Pacientes")
-    print("Seleccione el sistema que desea ingresar:")
-    num = readLine()?.toInt() as Int
-    when(num){
+    var opcion:Int
+    println("1.- Agregar Paciente"+ "\n"+
+            "2.- Eliminar Paciente" +"\n"+
+            "3.- Mostrar Pacientes"+"\n"+
+            "4.- Registrar Tratamiento"+"\n"+
+            "5.- Buscar Tratamientos"+"\n"+
+            "6.- Finalizar")
+    println("Seleccione una opción:")
+    opcion = readLine()?.toInt() as Int
+    when(opcion){
         1 -> {
-            var opcion:Int
-            println("Inventario")
-            println("1.- Agregar Inventario"+ "\n"+ "2.- Eliminar Inventario" +"\n"+ "3.- Mostrar Medicamento"+"\n"+ "4.- COnstruir Receta"+"\n"+ "5.- Fin del inventario")
-            println("Seleccione una opción:")
-            opcion = readLine()?.toInt() as Int
-            when(opcion){
-                1 -> {
-                    println("Ingrese los datos solicitados en el inventario")
-                    var medicina = Medicina()
-                    print("Codigo del medicamento")
-                    medicina.codigoMedicina = readLine()?.toString() as String
-                    print("Nombre del medicamento")
-                    medicina.nombreMedicina = readLine()?.toString() as String
-                    print("Tipo del medicamento")
-                    medicina.tipoMedicina = readLine()?.toString() as String
-                    print("Fecha de caducidad del medicamento")
-                    medicina.fechaCaducidadMedicina = readLine()?.toString() as String
-                    print("Descripcion del medicamento")
-                    medicina.descripcionUsoMedicina = readLine()?.toString() as String
-                    print("Costo del medicamento")
-                    medicina.costoMedicina = readLine()?.toDouble() as Double
-                    print("Observacion del medicamento")
-                    medicina.observacionMedicina = readLine()?.toString() as String
-                    print("Cantidad del medicamento")
-                    medicina.cantidadMedicina = readLine()?.toInt() as Int
-                    BaseDeDatosMedicina.agregarMedicina(medicina)
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                2 -> {
-                    var nombreMedicamento:String
-                    println("Escriba el nombre del medicamento que desea eliminar")
-                    nombreMedicamento = readLine()?.toString() as String
-                    BaseDeDatosMedicina.eliminarMedicina(nombreMedicamento)
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                3 -> {
-                    BaseDeDatosMedicina.mostrarMedicinas()
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                4 -> {
-                    var nombreReceta:String
-                    println("Ingrese Medicamento:")
-                    nombreReceta = readLine()?.toString() as String
-                    BaseDeDatosMedicina.formarRecetas(nombreReceta)
-                }
-                5 -> {
-                    estado=1
+            println("Ingrese los datos solicitados en el inventario")
+            var paciente = Paciente()
+            print("Codigo del paciente: ")
+            paciente.codigoPaciente= readLine()?.toString() as String
+            print("Nombre del paciente: ")
+            paciente.nombrePaciente = readLine()?.toString() as String
+            print("Apellido del paciente: ")
+            paciente.apellidoPaciente = readLine()?.toString() as String
+            print("Edad del paciente: ")
+            paciente.edadPaciente= readLine()?.toInt() as Int
+            print("Estado civil del paciente: ")
+            paciente.estadoCivilPaciente= readLine()?.toString() as String
+            print("Domicilio del paciente: ")
+            paciente.domicilioPaciente= readLine()?.toString() as String
+            print("Telefono del paciente: ")
+            paciente.telefonoPaciente = readLine()?.toString() as String
+            print("Grupo Sanguineo del paciente: ")
+            paciente.grupoSanguineoPaciente = readLine()?.toString() as String
+            print("Alergias del paciente: ")
+            paciente.alergiasPaciente = readLine()?.toString() as String
+            print("Enfermedad del paciente: ")
+            paciente.enfermedadPaciente = readLine()?.toString() as String
+            BaseDeDatosPaciente.agregarPaciente(paciente)
+                if(estado==0){
+                activarAplicacion()
+                }else{
+                println("Programa Finalizado")
                 }
             }
-
-
-        }
         2 -> {
-            var opcion:Int
-            println("Modelo.Paciente")
-            println("1.- Agregar Modelo.Paciente"+ "\n"+ "2.- Eliminar Modelo.Paciente" +"\n"+ "3.- Mostrar Pacientes"+"\n"+ "4.- Modelo.Tratamiento"+"\n"+ "5ot.- Fin de la administración de pacientes")
-            println("Seleccione una opción:")
-            opcion = readLine()?.toInt() as Int
-            when(opcion){
-                1 -> {
-                    println("Ingrese los datos solicitados en el inventario")
-                    var paciente = Paciente()
-                    print("Codigo del paciente")
-                    paciente.codigoPaciente= readLine()?.toString() as String
-                    print("Nombre del paciente")
-                    paciente.nombrePaciente = readLine()?.toString() as String
-                    print("Apellido del paciente")
-                    paciente.apellidoPaciente = readLine()?.toString() as String
-                    print("Edad del paciente")
-                    paciente.edadPaciente= readLine()?.toInt() as Int
-                    print("Estado civil del paciente")
-                    paciente.estadoCivilPaciente= readLine()?.toString() as String
-                    print("Domicilio del paciente")
-                    paciente.domicilioPaciente= readLine()?.toString() as String
-                    print("Telefono del paciente")
-                    paciente.telefonoPaciente = readLine()?.toString() as String
-                    print("Grupo Sanguineo del paciente")
-                    paciente.grupoSanguineoPaciente = readLine()?.toString() as String
-                    print("Alergias del paciente")
-                    paciente.alergiasPaciente = readLine()?.toString() as String
-                    print("Enfermedad del paciente")
-                    paciente.enfermedadPaciente = readLine()?.toString() as String
-                    BaseDeDatosPaciente.agregarPaciente(paciente)
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                2 -> {
-                    var nombrePaciente:String
-                    println("Escriba el nombre del paciente que desea eliminar")
-                    nombrePaciente = readLine()?.toString() as String
-                    BaseDeDatosPaciente.eliminarPacientes(nombrePaciente)
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                3 -> {
-                    BaseDeDatosPaciente.mostrarPacientes()
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                4 -> {
-                    println("Registrar tratamiento")
-                    BaseDeDatosPaciente.agregarTratamiento()
-                    if(estado==0){
-                        activarAplicacion()
-                    }else{
-                        println("Programa Finalizado")
-                    }
-                }
-                5 -> {
-                    estado=1
+             var nombrePaciente:String
+             println("Escriba el nombre del paciente que desea eliminar")
+             nombrePaciente = readLine()?.toString() as String
+             BaseDeDatosPaciente.eliminarPacientes(nombrePaciente)
+                if(estado==0){
+                    activarAplicacion()
+                }else{
+                    println("Programa Finalizado")
                 }
             }
+        3 -> {
+             BaseDeDatosPaciente.mostrarPacientes()
+                if(estado==0){
+                    activarAplicacion()
+                }else{
+                    println("Programa Finalizado")
+                }
+        }
+        4 -> {
+            println("Registrar tratamiento")
+            BaseDeDatosPaciente.agregarTratamiento()
+            if(estado==0){
+                activarAplicacion()
+            }else{
+                println("Programa Finalizado")
+            }
+        }
+        5 -> {
+            println("Buscar tratamientos del paciente a tráves del nombre")
+            var ejemplo:String =""
+            println("*************************************************")
+            var lstResultadoTratamientos:ArrayList<Tratamiento> = ArrayList()
+            ejemplo= readLine()?.toString() as String
+            lstResultadoTratamientos=BaseDeDatosPaciente.buscarTratamientosNombrePaciente(ejemplo)
+            for(item:Tratamiento in lstResultadoTratamientos){
+                var contador:Int=1
+                println("Tratamient"+contador+": "+item.tratamientoEnfermedad)
+                contador++
+            }
+            if(estado==0){
+                activarAplicacion()
+            }else{
+                println("Programa Finalizado")
+            }
+        }
+        6 -> {
+            estado=1
         }
     }
 }
+
 
 
 

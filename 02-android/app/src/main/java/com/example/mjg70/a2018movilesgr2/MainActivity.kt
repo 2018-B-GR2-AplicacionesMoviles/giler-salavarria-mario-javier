@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     fun irPantallaBotones(){
         val intentIrBotones=Intent(this, ButtonActivity::class.java)
+        intentIrBotones.putExtra("nombre", "Mario")
+        intentIrBotones.putExtra("apellido", "Giler")
         startActivity(intentIrBotones)
     }
 }

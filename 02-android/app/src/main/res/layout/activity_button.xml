@@ -6,4 +6,69 @@
     android:layout_height="match_parent"
     tools:context="com.example.mjg70.a2018movilesgr2.ButtonActivity">
 
+    <TextView
+        android:id="@+id/txt_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <Button
+        android:id="@+id/btn_enviar_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Enviar Correo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_contenido"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/txt_contenido"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contenido" />
+
+    <EditText
+        android:id="@+id/txt_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Correo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_content"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/txt_content"
+        app:layout_constraintTop_toBottomOf="@+id/txt_content" />
+
+    <EditText
+        android:id="@+id/txt_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Subject"
+        app:layout_constraintEnd_toEndOf="@+id/txt_mail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_mail"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mail" />
+
+    <EditText
+        android:id="@+id/txt_contenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Contenido"
+        app:layout_constraintEnd_toEndOf="@+id/txt_subject"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_subject"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subject" />
 </android.support.constraint.ConstraintLayout>

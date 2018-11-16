@@ -49,6 +49,10 @@
                 android:name=".MapsActivity"
                 android:label="@string/title_activity_maps">
         </activity>
+        <activity android:name=".ScrollActivity">
+        </activity>
+        <activity android:name=".EncuestaActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -15,6 +15,8 @@ class MenuActivity : AppCompatActivity() {
         btnCalendario.setOnClickListener { enviarCalendario() }
         btnVideo.setOnClickListener { enviarVideo() }
         btnMapa.setOnClickListener { enviarMapa() }
+        btnImagen.setOnClickListener{enviarImagenes()}
+        btnEncuesta.setOnClickListener { enviarEncuesta() }
     }
 
     fun enviarNavegar(){
@@ -32,5 +34,13 @@ class MenuActivity : AppCompatActivity() {
     fun enviarMapa(){
         val enviarMapa= Intent(this,MapsActivity::class.java)
         startActivity(enviarMapa)
+    }
+    fun enviarImagenes(){
+        val enviarImagenes= Intent(this,ScrollActivity::class.java)
+        startActivity(enviarImagenes)
+    }
+    fun enviarEncuesta(){
+        val enviarEncuesta= Intent(this, EncuestaActivity::class.java)
+        startActivity(enviarEncuesta)
     }
 }

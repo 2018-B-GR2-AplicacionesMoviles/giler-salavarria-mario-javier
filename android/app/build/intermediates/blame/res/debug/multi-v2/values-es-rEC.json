@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Documents\\Github\\giler-salavarria-mario-javier\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es-rEC\\values-es-rEC.xml",
+            "map": [
+                {
+                    "source": "E:\\Documents\\Github\\giler-salavarria-mario-javier\\android\\app\\src\\main\\res\\values-es-rEC\\colores.xml",
+                    "from": {
+                        "startLines": "4,5,2,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "157,204,57,105",
+                        "endColumns": "45,44,46,50",
+                        "endOffsets": "198,244,99,151"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,101,146,193",
+                        "endColumns": "45,44,46,50",
+                        "endOffsets": "96,141,188,239"
+                    }
+                }
+            ]
+        }
+    ]
+}

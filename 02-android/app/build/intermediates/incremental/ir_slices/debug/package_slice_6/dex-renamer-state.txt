@@ -1,0 +1,4 @@
+#Fri Nov 09 15:48:42 COT 2018
+base.0=E\:\\Documents\\Github\\giler-salavarria-mario-javier\\02-android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+path.0=classes.dex
+renamed.0=classes.dex

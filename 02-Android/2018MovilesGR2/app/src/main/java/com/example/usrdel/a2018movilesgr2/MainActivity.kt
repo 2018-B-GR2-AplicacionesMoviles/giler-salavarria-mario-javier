@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                 .setOnClickListener {
                     this.irActividadRecyclerView()
                 }
+
+        btn_fragment.setOnClickListener{
+            pantallaFragmento()}
     }
 
     fun irActividadRecyclerView() {
@@ -108,6 +111,11 @@ class MainActivity : AppCompatActivity() {
         // INTENT
         val intentRespuesta = Intent(this, IntentRespuestaActivity::class.java)
         this.startActivity(intentRespuesta)
+    }
+
+    fun pantallaFragmento(){
+        val fragmento = Intent(this, FragmentActivity::class.java)
+        startActivity(fragmento)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.project
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
@@ -21,18 +22,23 @@ class ConsultarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_consultar)
         var helper = SQLite(this)
-        var lstMedicina=helper.cargarMedicinas()
-        Log.i("BDD","medicina cargada")
+        var lstFarmacia=helper.cargarFarmacias()
+        Log.i("BDD","farmacia cargada")
         val layoutManager = LinearLayoutManager(this)
         val rv = recycler_view
-        val adaptador = MedicinaAdaptador(lstMedicina, this, rv)
+        val adaptador = MedicinaAdaptador(lstFarmacia, this, rv)
         recycler_view.layoutManager = layoutManager
         recycler_view.itemAnimator = DefaultItemAnimator()
         recycler_view.adapter = adaptador
         adaptador.notifyDataSetChanged()
     }
+    fun mandarActual(farmacia:Farmacia){
+        val intentFarmaciaSeleccionada = Intent(this, IngresarActivity::class.java)
+        intentFarmaciaSeleccionada.putExtra("Farmacia", farmacia)
+        startActivity(intentFarmaciaSeleccionada)
+    }
 }
-class MedicinaAdaptador(private val listaMedicinas: List<Medicina>,
+class MedicinaAdaptador(private val listaFarmacia: List<Farmacia>,
                         private val contexto: ConsultarActivity,
                         private val recyclerView: RecyclerView) :
     RecyclerView.Adapter<MedicinaAdaptador.MyViewHolder>() {
@@ -56,6 +62,9 @@ class MedicinaAdaptador(private val listaMedicinas: List<Medicina>,
             layout
                 .setOnClickListener {
                     val nombreActual = it.findViewById(R.id.text_view_nombre) as TextView
+                    val direeccionActual = it.findViewById(R.id.text_view_cedula) as TextView
+                    val farmaciaActual = Farmacia(nombreFar = nombreActual.toString(), direccionFar = direeccionActual.toString())
+
 
                     Log.i("recycler-view",
                         "El nombre actual es: ${nombreActual.text}")
@@ -126,14 +135,15 @@ class MedicinaAdaptador(private val listaMedicinas: List<Medicina>,
 
     // Llenamos los datos del layout
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val persona = listaMedicinas[position]
+        val farmacia = listaFarmacia[position]
 
-        holder.nombreTextView.setText(persona.nombreMed)
-        holder.cedulaTextView.setText(persona.codigoMed)
+        holder.nombreTextView.setText(farmacia.nombreFar)
+        holder.cedulaTextView.setText(farmacia.direccionFar)
     }
 
     override fun getItemCount(): Int {
-        return listaMedicinas.size
+        return listaFarmacia.size
     }
 
 }
+

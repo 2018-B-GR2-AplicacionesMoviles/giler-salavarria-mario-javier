@@ -11,25 +11,29 @@ class IngresarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingresar)
-        btnAceptar.setOnClickListener { aceptarIngreso() }
+        btnFarmacia.setOnClickListener { aceptarIngreso() }
         btnConsultar.setOnClickListener{ consultar()}
+        btnCancelarTip.setOnClickListener { borrar() }
     }
     fun aceptarIngreso(){
 
-        val medicina= Medicina(nombreMed = txtNombreMed.text.toString(),
-            codigoMed = txtCodigoMed.text.toString(),
-            precioMed = txtPrecio.text.toString(),
-            observacionMed = txtObservacionMed.text.toString(),
-            dosisMed = txtDosisMed.text.toString())
+        val farmacia= Farmacia(nombreFar = txtNombreMedicina.text.toString(),
+            direccionFar = txtCodigoMedicina.text.toString())
         var helper = SQLite(this)
-        helper.crearUsuarioFormulario(medicina)
-        Log.i("BDD","medicina creada")
-
+        helper.crearFarmacia(farmacia)
+        txtNombreMedicina.setText("")
+        txtCodigoMedicina.setText("")
+        Log.i("BDD","Farmacia creada")
 
     }
 
     fun consultar(){
         val intent = Intent(this, ConsultarActivity::class.java)
         startActivity(intent)
+
+    }
+    fun borrar(){
+        txtNombreMedicina.setText("")
+        txtCodigoMedicina.setText("")
     }
 }

@@ -9,6 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".IngresarMedicina">
+        </activity>
+        <activity android:name=".IngresarTipoMed">
+        </activity>
         <activity android:name=".ConsultarActivity">
         </activity>
         <activity android:name=".IngresarActivity">
